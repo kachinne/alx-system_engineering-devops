@@ -1,1 +1,1 @@
-Life is but a teacher
+Life is but a good teacher
