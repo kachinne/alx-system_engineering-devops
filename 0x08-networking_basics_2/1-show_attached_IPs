@@ -1,14 +1,4 @@
 #!/usr/bin/env bash
-# This script displays all acive IPv4 addresses on the m
-interfaces=$(ip -o link show | awk -F': ' '{print $2}')
+# Displays all acive IPv4 addresses.
 
-# Iterate over each interface and retrieve its IPv4 address
-for interface in $interfaces; do
-    ipv4=$(ip -o -4 addr show dev $interface | awk '{print $4}')
-    if [[ -n "$ipv4" ]]; then
-        echo "Interface: $interface"
-        echo "IPv4 Address: $ipv4"
-        echo
-    fi
-done
-
+ifconfig | grep -Eo "inet (addr:)?([0-9]*\.){3}[0-9]*" | cut -b 11-
